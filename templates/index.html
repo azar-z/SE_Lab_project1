@@ -8,19 +8,29 @@
 </head>
 <body>
     <h2>IoT Temperature Sensor Data</h2>
+    <p id="error-message" style="color: red; display: none;">Error fetching data. Please check the server.</p>
     <canvas id="tempChart"></canvas>
 
     <script>
         async function fetchData() {
-            const response = await fetch('/data');
-            const data = await response.json();
+            try {
+                const response = await fetch('/data');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const data = await response.json();
+                document.getElementById('error-message').style.display = 'none';
 
-            const labels = data.map(entry => entry.time);
-            const temperatures = data.map(entry => entry.temperature);
+                const labels = data.map(entry => entry.time);
+                const temperatures = data.map(entry => entry.temperature);
 
-            tempChart.data.labels = labels;
-            tempChart.data.datasets[0].data = temperatures;
-            tempChart.update();
+                tempChart.data.labels = labels;
+                tempChart.data.datasets[0].data = temperatures;
+                tempChart.update();
+            } catch (error) {
+                document.getElementById('error-message').style.display = 'block';
+                console.error('Error fetching temperature data:', error);
+            }
         }
 
         const ctx = document.getElementById('tempChart').getContext('2d');
