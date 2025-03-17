@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 import time
 
 from sensor import read_temperature
@@ -6,6 +6,11 @@ from sensor import read_temperature
 app = Flask(__name__)
 
 temp_data = []
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 
 @app.route('/data')
