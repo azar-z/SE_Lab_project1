@@ -1,7 +1,14 @@
 # Git Aliases 
 
 ## pr Command  
-Fetch & checkout a pull request (by number) with this command.
+Add this to your ~/.gitconfig:
+```ini
+[alias]
+    pr = "!f() { git fetch origin pull/$1/head:pr-$1 && git checkout pr-$1; }; f"
+
+```
+
+Then you can fetch & checkout a pull request (by number) with 'pr' command.
 
 example:
 
