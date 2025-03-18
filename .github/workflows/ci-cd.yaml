@@ -21,3 +21,11 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: "3.9"
+
+      - name: Run Tests
+        run: |
+          pytest test  # Run tests in the "test" directory
+
+      - name: Run Static Analysis
+        run: |
+          flake8 .  # Run static analysis on the entire project
