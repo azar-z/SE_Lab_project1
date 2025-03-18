@@ -93,6 +93,8 @@ Example: git commit -m "feat: Added initial IoT sensor data collection script"
 
 ** در پیاده‌سازی این داشبورد از gpt کمک گرفته‌شده است. تنها ضعف آن که اصلاح شد عدم error handling بود.
 
+در تصویر زیر یک خروجی نمونه از این داشبورد نمایش داده‌شده است:
+![](static/dashboard.png)
 ## 2. روال Pull Request
 از آن‌جایی که شاخه‌ی main محافظت شده است تمامی تغییرات با استفاده از pull request روی شاخه‌ی اصلی ادغام شده و حداقل به یک بازبینی نیاز داشتند.
 
